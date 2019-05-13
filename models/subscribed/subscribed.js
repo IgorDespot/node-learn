@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const SubscribedSchema = new Schema({
     isSubscribed: {
         type: Boolean,
-        required: true,
-        default:true
+        required: true
     },
     url: {
         type: String
