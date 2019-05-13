@@ -1,15 +1,14 @@
 "use strict";
+//var http = require('http');
+var app = require('../../app');
+var server = require('../../config').server;
+//var logger = require('../../util/logger');
 
-var service = require("../service")();
-var http = require("http");
+const port = (server.port || 3000);
+
+//var server = http.createServer(app);
+//server.listen(port);
+//app.listen(port, () => logger.info('Server running!'));
 
 
-var server = http.createServer(service);
-
-server.listen(3000);
-
-server.on("listening", function () {
-    console.log(`Node-Project is listening on ${server.address().port} in ${service.get('env')} mode.`)
-});
-
-module.exports = server;
+app.listen(port);

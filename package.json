@@ -2,9 +2,9 @@
   "name": "learn",
   "version": "1.0.0",
   "description": "",
-  "main": "server/service.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/run"
+    "start": "nodemon ./bin/run"
   },
   "repository": {
     "type": "git",
