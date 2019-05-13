@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const logger = require('../../util/logger').logger;
 const Schema = mongoose.Schema;
 var crypto = require('crypto');
 
