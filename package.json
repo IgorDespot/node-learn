@@ -1,0 +1,22 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/service.js",
+  "scripts": {
+    "start": "node ./bin/run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorDespot/node-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorDespot/node-learn/issues"
+  },
+  "homepage": "https://github.com/IgorDespot/node-learn#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
