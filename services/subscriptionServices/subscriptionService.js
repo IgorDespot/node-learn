@@ -12,8 +12,8 @@ function sendDataToApi(isSubscribed, uri, data) {
         };
 
         rp(options)
-        .then( console.log('It works'))
-        .catch( console.log('It didnt work'));
+        .then( resp => console.log('It works'))
+        .catch( err => console.log('It didnt work'));
     }
 }
 
