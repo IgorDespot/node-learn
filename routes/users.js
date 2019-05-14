@@ -13,13 +13,4 @@ const {
 router.get('/readFile', authService.authVerifyUsername, authService.authVerifyRole, userService.readFile);
 
 
-
-
-
-
-
-// *** WRITE TO FILE
-router.get('/country/:name', writeToFile);
-
-
 module.exports = router;
