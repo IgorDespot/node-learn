@@ -16,7 +16,8 @@ module.exports.authVerifyUsername = (req, res, next) => {
 
 
     } else {
-        res.status(403).send("Forbidden authVerifyUsername")
+        //res.status(403).send("Forbidden authVerifyUsername")
+        next();
     }
 
 };
@@ -38,7 +39,9 @@ module.exports.authVerifyRole = (req, res, next) => {
         userService.getUserRole(username, req, res, next);
 
     } else {
-        res.status(403).send("Forbidden authVerifyRole")
+        let username = 'guest';
+        userService.getUserRole(username, req, res, next);
+        //res.status(403).send("Forbidden authVerifyRole")
     }
 
 };

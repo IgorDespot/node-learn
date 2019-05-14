@@ -3,19 +3,24 @@ const Schema = mongoose.Schema;
 
 let BookSchema = new Schema({
     title: {
-        type: String
+        type: String,
+        trim: true
     },
     description: {
-        type: String
+        type: String,
+        trim: true
     },
     pageCount: {
-        type: Number
+        type: Number,
+        trim: true
     },
     excerpt: {
-        type: String
+        type: String,
+        trim: true
     },
     publishDate: {
-        type: Date
+        type: Date,
+        trim: true
     }
 });
 
