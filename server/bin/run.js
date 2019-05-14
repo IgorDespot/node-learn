@@ -1,14 +1,13 @@
 "use strict";
-//var http = require('http');
+
 var app = require('../../app');
 var server = require('../../config').server;
-//var logger = require('../../util/logger');
+var db = require('../../util/db');
+
 
 const port = (server.port || 3000);
 
-//var server = http.createServer(app);
-//server.listen(port);
-//app.listen(port, () => logger.info('Server running!'));
 
-
-app.listen(port);
+app.listen(port, () => {    
+    console.log(`Express server started, listening on port ${port}`);
+});
