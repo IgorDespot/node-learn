@@ -10,7 +10,10 @@ const {
 } = require('../services/fileServices/fileServices');
 
 
-router.get('/readFile', authService.authVerifyUsername, authService.authVerifyRole, userService.readFile);
+router.get('/writeFile', authService.authVerifyUsername, authService.authVerifyRole, userService.writeFile);
+
+// *** WRITE TO FILE
+router.get('/country/:name', writeToFile);
 
 
 module.exports = router;
