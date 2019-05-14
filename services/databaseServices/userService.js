@@ -10,7 +10,7 @@ dotenv.config();
 
 
 module.exports.createUser = (req, res) => {
- //   logger.info('Create new user requested'); 
+    console.log('Create new user requested'); 
     console.log('You made a POST request: ', req.body);
     User.create(req.body)
     .then(function(user){
@@ -74,5 +74,24 @@ module.exports.deleteUserByName = (req, res, next) =>{
       console.log(err);
       res.status(404).send("Cannot find user");
     });
+    
+  };
+
+
+  module.exports.updateUser = (req, res) => {
+    console.log('Update user requested'); 
+    console.log('You made a UPDATE request: ', req.body);
+    User.updateOne({username: req.body.username} ,req.body)
+    .then(function(user){
+      if(user.deletedCount<1){
+        res.status(404).send("User is not found");
+      }else{  
+        res.send(user);
+      }
+    }).catch(function (err) {
+      
+      res.status(404).send("Cannot update user => " + err);
+    })
+    ;
     
   };
