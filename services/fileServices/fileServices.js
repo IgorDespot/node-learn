@@ -64,7 +64,7 @@ let saveCommentToDB = (req, res, next) => {
     newComm.commentId = req.body.commentId;
     newComm.name = req.body.name;
     newComm.email = req.body.email;
-    newComm.commentBody = req.body.commentBody;
+    newComm.commentBody = req.body.commentBody; 
 
     // save newComm object to database 
     newComm.save((err, comm) => {
