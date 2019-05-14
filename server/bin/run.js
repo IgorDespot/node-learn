@@ -11,4 +11,7 @@ const port = (server.port || 3000);
 //app.listen(port, () => logger.info('Server running!'));
 
 
-app.listen(port);
+app.listen(port, () => {
+    console.log('Server running!');
+
+});

@@ -11,11 +11,10 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 //app.use('/admin', adminRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
     res.status(404).send('Error 404 Page not found!');
 });
 
