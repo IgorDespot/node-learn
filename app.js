@@ -1,5 +1,5 @@
 var express = require('express');
-//var logger = require('./util/logger');
+var logger = require('./util/logger');
 var path = require('path');
 var connection = require('./util/db');
 var usersRouter = require('./routes/users');
