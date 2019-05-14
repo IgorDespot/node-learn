@@ -38,3 +38,41 @@ module.exports.createUser = (req, res) => {
       res.status(404).send("Cannot find users");
     })
 };
+
+module.exports.getUserByName = (req, res, next) => {
+  console.log('Show user by name requested'); 
+        let userName = req.params.username;
+        User.find({username: userName}).
+        populate('role').
+        then(function(user){
+          console.log(user);
+          console.log('Shown user by name'); 
+          if(user.length<1){
+            res.status(404).send("Cannot find user");
+          }else{
+      
+            res.send(user);
+          }
+        }).catch(function (err) {
+          console.log(err);
+          res.status(404).send("Cannot find user");
+        });
+};
+
+module.exports.deleteUserByName = (req, res, next) =>{
+  console.log('Delete single user requested'); 
+    let nameUser = req.params.username;
+    User.remove({username: nameUser}).then(function(user){
+      console.log(user);
+      if(user.deletedCount<1){
+        res.status(404).send("Cannot find user");
+      }else{
+  
+        res.send(user);
+      }
+    }).catch(function (err) {
+      console.log(err);
+      res.status(404).send("Cannot find user");
+    });
+    
+  };
