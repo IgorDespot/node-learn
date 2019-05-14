@@ -22,7 +22,12 @@ let CommentSchema = new Schema({
     commentBody: {
         type: String,
         trim: true
-    }
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        // required: true
+      }
 });
 
 let CommentModel = mongoose.model('Comment', CommentSchema);
