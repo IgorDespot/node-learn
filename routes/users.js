@@ -4,5 +4,8 @@ const functions = require('../services/databaseServices/userService')
 
 
 router.get('/showusers', functions.getAllUsers );
+router.get('/showusers/:username', functions.getUserByName );
+router.delete('/showusers/:username', functions.deleteUserByName );
 router.post('/adduser',functions.createUser); 
+router.put('/showusers/:username', functions.updateUser);
 module.exports = router;
