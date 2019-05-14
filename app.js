@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //app.use('/admin', adminRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 
 
 // API to use for our fake online api calls

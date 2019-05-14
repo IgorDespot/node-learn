@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const logger = require('../../util/logger').logger;
 const Schema = mongoose.Schema;
-var crypto = require('crypto');
+const crypto = require('crypto');
 
-var validateUsername = function (username) {
+const validateUsername = function (username) {
     logger.info("Checking username...");
     if (validator.isLowercase(username)) {
         logger.info("Username validaton passed");
@@ -15,7 +15,7 @@ var validateUsername = function (username) {
     }
 
 }
-var validatePassword = function (password) {
+const validatePassword = function (password) {
     logger.info("Checking password...");
     if (!validator.isAlphanumeric(password)) {
         logger.info("Password validaton passed");
@@ -26,12 +26,12 @@ var validatePassword = function (password) {
     }
 
 }
-  
 
 
 
 
-var validateLocalStrategyEmail = function (email) {
+
+const validateLocalStrategyEmail = function (email) {
     console.log(validator.isEmail(email));
     return (validator.isEmail(email));
 };
@@ -41,38 +41,37 @@ var validateLocalStrategyEmail = function (email) {
 const UserSchema = new Schema({
     username: {
         type: String,
-        unique: true,
+        // unique: true,
         required: true,
-        minlength: 6,
-        validate: [validateUsername, 'Username is not valid']
+        minlength: 6
+        // validate: [validateUsername, 'Username is not valid']
 
     },
     password: {
         type: String,
         required: true,
         minlength: 6,
-        validate: [validatePassword, 'Password is not valid']
+        // validate: [validatePassword, 'Password is not valid']
     },
-    email:{
+    email: {
         type: String,
-        unique: true,
+        // unique: true,
         required: true,
-        validate: [validateLocalStrategyEmail, 'Please enter valid email']
+        // validate: [validateLocalStrategyEmail, 'Please enter valid email']
     },
-    role: 
+    role:
     {
         type: Schema.Types.ObjectId,
         ref: 'Role',
-        required:true
-    }
-    ,
-    subscribed:{
-        type: Schema.Types.ObjectId,
-        ref:'Subscribed',
-        required:true
+        required: true
     },
-    salt:{
-        type:String
+    subscribed: {
+        type: Schema.Types.ObjectId,
+        ref: 'Subscribed'
+
+    },
+    salt: {
+        type: String
     }
 
 })

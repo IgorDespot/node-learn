@@ -1,19 +1,14 @@
 const express = require('express')
 const router = express.Router();
-
-
-
 const authService = require('../services/databaseServices/authService');
 const userService = require('../services/databaseServices/userService');
-const {
-    writeToFile
-} = require('../services/fileServices/fileServices');
+
 
 
 router.get('/writeFile', authService.authVerifyUsername, authService.authVerifyRole, userService.writeFile);
-
-// *** WRITE TO FILE
-router.get('/country/:name', writeToFile);
+// router.get('/readFile', authService.authVerifyUsername, authService.authVerifyRole, userService.readFile);
+// router.get('/deleteFile', authService.authVerifyUsername, authService.authVerifyRole, userService.writeFile);
+// router.get('/updateFile', authService.authVerifyUsername, authService.authVerifyRole, userService.writeFile);
 
 
 module.exports = router;
