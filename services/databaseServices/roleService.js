@@ -10,7 +10,7 @@ dotenv.config();
 
 
 module.exports.createRole = (req, res) => {
- //   logger.info('Create new role requested'); 
+ console.log('Create new role requested'); 
     console.log('You made a POST request: ', req.body);
     Role.create(req.body)
     .then(function(role){

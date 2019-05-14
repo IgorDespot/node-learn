@@ -3,6 +3,14 @@ const rp = require('request-promise');
 
 const bookApiUri = 'http://fakerestapi.azurewebsites.net/api/Books';
 const commentsApiUri = 'https://jsonplaceholder.typicode.com/comments';
+const Comment = require('../../models/apiModels/CommentModel');
+const logger = require('../../util/logger');
+
+const {
+    writeIntoTxtFile
+} = require('../../util/fileUsage');
+const subscribe = require('../subscriptionServices/subscriptionService');
+const User = require('../../models/users/users');
 
 // set up default API object
 // **
@@ -16,24 +24,7 @@ let api = {
 
 // GET COUNTRY BY NAME
 // **
-let getCountryByName = (req, res, next) => {
-    if (req.body.uri === bookApiUri || req.body.uri === commentsApiUri) {
-        api.uri = req.body.uri;
 
-        rp(api)
-            .then((resolved) => {
-                console.log("rp api file saved")
-                res.status(200).send(resolved);
-            })
-            .catch((rejected) => {
-                res.status(404).send(rejected);
-            });
-    } else {
-        res.send({
-            errMsg: `This application does not support the API you sent, please use one of these two APIs: ${bookApiUri} or ${commentsApiUri}`
-        })
-    }
-};
 
 let getCommentsById = (req, res, next) => {
     api.uri = `https://jsonplaceholder.typicode.com/comments/${req.params.commentId}`;
@@ -49,5 +40,6 @@ let getCommentsById = (req, res, next) => {
 
 module.exports = {
     getCountryByName,
-    getCommentsById
+    getCommentsById,
+    saveCommentToDB
 }
