@@ -1,16 +1,16 @@
 const fs = require('fs');
 const rp = require('request-promise');
 
-const bookApiUri = 'http://fakerestapi.azurewebsites.net/api/Books';
-const commentsApiUri = 'https://jsonplaceholder.typicode.com/comments';
+// const bookApiUri = 'http://fakerestapi.azurewebsites.net/api/Books';
+// const commentsApiUri = 'https://jsonplaceholder.typicode.com/comments';
 const Comment = require('../../models/apiModels/CommentModel');
 const logger = require('../../util/logger');
 
-const {
-    writeIntoTxtFile
-} = require('../../util/fileUsage');
-const subscribe = require('../subscriptionServices/subscriptionService');
-const User = require('../../models/users/users');
+// const {
+//     writeIntoTxtFile
+// } = require('../../util/fileUsage');
+// const subscribe = require('../subscriptionServices/subscriptionService');
+// const User = require('../../models/users/users');
 
 // set up default API object
 // **
@@ -38,8 +38,42 @@ let getCommentsById = (req, res, next) => {
         });
 };
 
+
+// CREATE NEW COMMENT
+// **
+let saveCommentToDB = (req, res, next) => {
+    logger.info(`POST fired: create a new comment. ${Date(Date.now())}`);
+
+    // creating empty comment object
+    let newComm = new Comment();
+
+    // intialize newComm object with request data 
+    newComm.postId = req.body.postId;
+    newComm.commentId = req.body.commentId;
+    newComm.name = req.body.name;
+    newComm.email = req.body.email;
+    newComm.commentBody = req.body.commentBody; 
+
+    // save newComm object to database 
+    newComm.save((err, comm) => {
+        if (err) {
+            return res.status(400).send({                
+                message: err
+            });
+        } else {
+            return res.status(201).send({
+                message: `Comment no. ${comm.commentId} succesfully added to database.`
+            });
+        }
+    });
+};
+
+
+
+
+
 module.exports = {
-    getCountryByName,
+    //getCountryByName,
     getCommentsById,
     saveCommentToDB
 }
