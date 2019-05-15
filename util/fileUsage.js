@@ -66,7 +66,8 @@ const createFolder = (path) => {
 
 const writeIntoTxtFile = (extension, id, username, api) => {
 
-
+    //fullFolderPath = getFullFolderPath(id);
+    //fullFilePath = getFullFilePath(extension, username, id);
 
     let folderName = id;
     let fileName = username;
@@ -103,11 +104,76 @@ const writeIntoFile = (path, content) => {
         }
     });
 }
+
 const updateFile = (path, content) => {
     fs.appendFile(path, `\n${content}`, (err) => {
         if (err) throw err;
         console.log("The data was succesfully updated!")
     })
+}
+
+const getFullFilePath = (extension, username, id) => {
+    let folderName = id;
+    let fileName = username;
+    let filePath = `../../userFiles/${folderName}/${fileName}.${extension}`;
+    let fullFilePath = path.join(__dirname, filePath);
+    return fullFilePath;
+}
+
+const deleteFile = (path) => {
+    if(checkIfFileExists(path)){
+        fs.unlink(path, (err) => {
+            if (err) throw err;
+            console.log('File has been successfully deleted!');
+        });
+    }
+}
+
+const getFullFolderPath = (id) => {
+    let folderPath = `../../userFiles/${id}`;
+    let fullFolderPath = path.join(__dirname, folderPath);
+    return fullFolderPath;
+}
+
+const deleteFolder = (path) => {
+    if(checkIfFolderExists(path)){
+        fs.rmdir(path, (err) => {
+            if (err) throw err;
+            console.log('Folder has been successfully deleted!');
+        });
+    }
+}
+
+const removeUsersFolder = (id) => {
+    path = getFullFolderPath(id);
+    if(!deleteFolder(path)){
+        console.log('Failed to delete folder!');
+    }
+}
+const removeUsersFile = (extension, username, id) => {
+    path = getFullFilePath(extension, username, id);
+    if(!deleteFile(path)){
+        console.log('Failed to delete file!');
+    }
+}
+
+const readFile = (extension, id, username) => {
+
+    let path = getFullFilePath(extension, id, username);
+    var fileContent = '';
+
+    if(checkIfFileExists(path)){
+        
+        fileContent = fs.readFileSync(path);
+
+        if(fileContent !== ''){
+            console.log(fileContent);
+            return fileContent;
+        }else{
+            console.log('File is empty!');
+            return 'File is empty.';
+        }
+    }      
 }
 
 module.exports = {
@@ -116,5 +182,12 @@ module.exports = {
     checkIfFolderExists,
     createFolder,
     updateFile,
-    writeIntoFile
+    writeIntoFile,
+    deleteFile,
+    deleteFolder,
+    getFullFilePath,
+    getFullFolderPath,
+    removeUsersFolder,
+    removeUsersFile,
+    readFile
 }
