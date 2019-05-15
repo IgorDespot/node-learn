@@ -6,8 +6,7 @@ const checkExtension = (extension) => {
     if (extension.trim().toLowerCase() === "txt") {
         console.log('File is txt extension.')
         return true;
-    }
-    else if (extension.trim().toLowerCase() === "csv") {
+    } else if (extension.trim().toLowerCase() === "csv") {
         console.log('File is csv extension.')
         return true;
     } else {
@@ -68,6 +67,7 @@ const createFolder = (path) => {
 const writeIntoTxtFile = (extension, id, username, api) => {
 
 
+
     let folderName = id;
     let fileName = username;
     let folderPath = `../../userFiles/${folderName}`;
@@ -96,7 +96,11 @@ const writeIntoTxtFile = (extension, id, username, api) => {
 
 const writeIntoFile = (path, content) => {
     fs.writeFile(path, content, err => {
-        if (err) { console.log(err) } else { console.log('uspesno!!') }
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('uspesno!!')
+        }
     });
 }
 const updateFile = (path, content) => {
