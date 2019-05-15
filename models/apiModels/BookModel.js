@@ -21,6 +21,11 @@ let BookSchema = new Schema({
     publishDate: {
         type: Date,
         trim: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        // required: true
     }
 });
 

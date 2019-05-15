@@ -189,6 +189,9 @@ module.exports.getUserByName = (req, res, next) => {
         });
 };
 
+
+
+
 module.exports.deleteUserByName = (req, res, next) => {
     console.log('Delete single user requested');
     let nameUser = req.params.username;
@@ -204,5 +207,24 @@ module.exports.deleteUserByName = (req, res, next) => {
         console.log(err);
         res.status(404).send("Cannot find user");
     });
+
+};
+
+
+module.exports.updateUser = (req, res) => {
+    console.log('Update user requested');
+    console.log('You made a UPDATE request: ', req.body);
+    User.updateOne({ username: req.body.username }, req.body)
+        .then(function (user) {
+            if (user.deletedCount < 1) {
+                res.status(404).send("User is not found");
+            } else {
+                res.send(user);
+            }
+        }).catch(function (err) {
+
+            res.status(404).send("Cannot update user => " + err);
+        })
+        ;
 
 };

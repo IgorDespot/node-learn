@@ -68,7 +68,17 @@ const UserSchema = new Schema({
     subscribed: {
         type: Schema.Types.ObjectId,
         ref: 'Subscribed'
-
+        // required:true
+    },
+    book: {
+        type: Schema.Types.ObjectId,
+        ref: 'BookModel'
+        // required:true
+    },
+    comment: {
+        type: Schema.Types.ObjectId,
+        ref: 'CommentModel'
+        // required:true
     },
     salt: {
         type: String

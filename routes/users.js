@@ -18,4 +18,7 @@ router.get('/showusers', userService.getAllUsers);
 router.get('/showusers/:username', userService.getUserByName);
 router.delete('/showusers/:username', userService.deleteUserByName);
 router.post('/adduser', userService.createUser);
+router.put('/showusers/:username', userService.updateUser);
+
+
 module.exports = router;
