@@ -67,13 +67,16 @@ const createFolder = (path) => {
 
 const writeIntoTxtFile = (extension, id, username, api) => {
 
+
+    let folderName = id;
+    let fileName = username;
     let folderPath = `../../userFiles/${folderName}`;
     let fullFolderPath = path.join(__dirname, folderPath);
     let filePath = `../../userFiles/${folderName}/${fileName}.${extension}`;
     let fullFilePath = path.join(__dirname, filePath);
 
     let timeAPI = Date(Date().now);
-    let fileContent = `API: ${api} Time: ${timeAPI},`;
+    let fileContent = `ID: ${id} API: ${api} Time: ${timeAPI},`;
 
     if (checkExtension(extension)) {
         if (!checkIfFolderExists(fullFolderPath)) {
