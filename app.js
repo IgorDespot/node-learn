@@ -5,7 +5,7 @@ var connection = require('./util/db');
 var usersRouter = require('./routes/users');
 var fakeApiRouter = require('./routes/fakeApiRoutes');
 var rolesRouter = require('./routes/roles');
-var fakeApiRouter = require('./routes/fakeApiRoutes');
+
 
 
 var app = express();
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // API to use for our fake online api calls
 // **
-app.use('/api', fakeApiRouter);
+// app.use('/api', fakeApiRouter);
 
 
 

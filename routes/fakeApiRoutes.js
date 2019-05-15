@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    getCountryByName,
+    // getCountryByName,
     getCommentsById,
     saveCommentToDB
 } = require('../services/fileServices/fileServices');
 
 
 
-// ** WRITE TO FILE **
-router.get('/country/:name', getCountryByName);
+// // ** WRITE TO FILE **
+// router.get('/country/:name', getCountryByName);
 
 
 // ** GET COMMENT BY ID **
