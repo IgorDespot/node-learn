@@ -2,15 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    // getCountryByName,
+    getDataAndLog,
     getCommentsById,
     saveCommentToDB
 } = require('../services/fileServices/fileServices');
 
+const { authVerifyUsername, authVerifyRole } = require('../services/databaseServices/authService');
 
 
 // // ** WRITE TO FILE **
-// router.get('/country/:name', getCountryByName);
+router.post('/getDataAndLog',authVerifyUsername, authVerifyRole, getDataAndLog);
 
 
 // ** GET COMMENT BY ID **

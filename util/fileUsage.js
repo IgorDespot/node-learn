@@ -70,9 +70,9 @@ const writeIntoTxtFile = (extension, id, username, api) => {
 
     let folderName = id;
     let fileName = username;
-    let folderPath = `../../userFiles/${folderName}`;
+    let folderPath = `../userFiles/${folderName}`;
     let fullFolderPath = path.join(__dirname, folderPath);
-    let filePath = `../../userFiles/${folderName}/${fileName}.${extension}`;
+    let filePath = `../userFiles/${folderName}/${fileName}.${extension}`;
     let fullFilePath = path.join(__dirname, filePath);
 
     let timeAPI = Date(Date().now);

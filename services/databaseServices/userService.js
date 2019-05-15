@@ -117,7 +117,7 @@ module.exports.getUserRole = (username, req, res, next) => {
                     res.status(404).send("Cannot find user");
                 } else {
                     console.log("Role '" + result + "' is found");
-                    if (url === '/writeFile' && ((role === 'user') || (role === 'admin'))) {
+                    if (url === '/getDataAndLog' && ((role === 'user') || (role === 'admin'))) {
                         console.log("Username - '" + username + "' with role '" + role + "' can write file");
                         next();
                     } else if (url === '/updateFile' && ((role === 'user') || (role === 'admin'))) {
